@@ -50,6 +50,7 @@ void insert(int item)
     nptr->data = item;
     
 	if (head==NULL)
+	
 	{
 		nptr->next=NULL;
 		head=nptr;

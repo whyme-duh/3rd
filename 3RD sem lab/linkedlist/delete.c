@@ -31,7 +31,7 @@ int main()
     int n, ch;
     do
     {
-        printf("\n\nList Menu\n1. Enter item \n2. Display\n3 Delete first element\n0. Exit");
+        printf("\n\nList Menu\n1. Enter item \n2. Display\n3 Delete first element\n 4. Update \n0. Exit");
         printf("\nEnter Choice 0-3? : ");
         scanf("%d", &ch);
         switch (ch)
@@ -45,10 +45,13 @@ int main()
             case 2:
                 display();
                 break;
-              case 3:
-                
-                deletefirstelement();
-                break;
+          	case 3:
+            
+	            deletefirstelement();
+	            break;
+	        case 4:
+	        	update_element(n);
+	        	break;
        
        
         }
@@ -85,19 +88,30 @@ else
 
       temp->next=nptr;
       nptr->next=NULL;
-}
-
- 
-
-    
-
- 
-
- 
+} 
 
  
 
 }
+void update_element(int data)
+{
+int count = 0;
+int update_ele;
+struct node* temp;
+temp = head;
+while(temp != NULL) // Start traversing from head node
+{
+if(temp -> data == data)
+{
+printf("\nEnter the new data to update the old data : ");
+scanf("%d",&update_ele);
+temp -> data = update_ele; // change the element in the list
+}
+else
+{
+count = count + 1;
+temp = temp -> next;
+}}}
 
  
 
