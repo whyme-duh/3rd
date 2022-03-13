@@ -5,23 +5,26 @@
 struct node {
 int data;
 struct node *next;
-}*head;
-void createList(int n);
+};
+struct node *head = NULL;
+
+void insertion(int );
 void update_element(int data);
 void displayList();
+void deletefirstelement();
 
 int main()
 {
 int n, data, element,ch;
 do{
 	printf("Enter the choice :");
-	printf("\n 1. Insertion \n 2. Display \n 3. Update \n 0. Exit \n");
+	printf("\n 1. Insertion \n 2. Display \n 3. Update \n 4. Delete First Element \n 0. Exit \n");
 	scanf("\t %d", &ch);
 	switch(ch){
 		case 1:
-			printf("\nEnter the total number of nodes: ");
+			printf("\nEnter the number ");
 			scanf("%d", &n);
-			createList(n);
+			insertion(n);
 			break;
 		case 2:
 			printf("The items are: ");
@@ -33,53 +36,48 @@ do{
 			scanf("%d",&element);
 			update_element(element);
 			break;
+		case 4:
+		
+			deletefirstelement();
+			break;
 	}
 }
 	while(ch!=0);
 	return 0;
 		
 }
-	
-	
 
 
-void createList(int n)
+void insertion(int n)
 {
-	struct node *newNode, *temp;
+	struct node *temp;
+	struct node *nptr =(struct node *) malloc(sizeof(struct node));
 	int data, i;
-	head = (struct node *)malloc(sizeof(struct node));
+	nptr->data = n;
 
-	if(head == NULL)
-		{
-		printf("Unable to allocate memory.");
-		}
-	else
-		{
-		printf("\nEnter the data of node 1: ");
-		scanf("%d", &data);
-		head->data = data;
-		head->next = NULL;
-		temp = head;
-		for(i=2; i<=n; i++)
-	{
-	newNode = (struct node *)malloc(sizeof(struct node));
-	if(newNode == NULL)
-		{
-		printf("Unable to allocate memory.");
-		break;
-	}
-	else
-	{
-		printf("\nEnter the data of node %d: ", i);
-		scanf("%d", &data);
-		newNode->data = data;
-		newNode->next = NULL;
-		temp->next = newNode;
-		temp = temp->next;
+	if (head==NULL)
+  {
+      
+  nptr->next=NULL;
+  head=nptr;
+  }
+
+ 
+
+else
+{
+ temp=head;
+   while (temp->next!= NULL)
+    {
+        
+        temp =temp->next;
+    }
+      temp->next=nptr;
+      nptr->next=NULL;
+} 
 }
-}
-}
-}
+
+
 
 void update_element(int data)
 {
@@ -99,13 +97,26 @@ void update_element(int data)
 		{
 			count = count + 1;
 			temp = temp -> next;
-			printf("Cant find that number. Sorry!");
-			break;
+			
 		}
 	}
 }
 
-
+void deletefirstelement()
+{
+    
+    struct node *temp;
+    
+    temp=head;
+    head=head->next;
+    
+    printf("Deleted item=%d \n",temp->data);
+    free(temp);
+    
+    
+    
+    
+    }
 
 void displayList()
 {

@@ -1,12 +1,7 @@
 //Delete first element from linked list
 
- 
-
-
 #include <stdio.h>
 #include <stdlib.h>
-
- 
 
 struct node
 {
@@ -23,12 +18,12 @@ struct node *head=NULL;
 void display();
 void insert(int);
 void deletefirstelement();
-
+void update_element(int data);
  
 
 int main()
 {
-    int n, ch;
+    int n, ch,element;
     do
     {
         printf("\n\nList Menu\n1. Enter item \n2. Display\n3 Delete first element\n 4. Update \n0. Exit");
@@ -50,7 +45,9 @@ int main()
 	            deletefirstelement();
 	            break;
 	        case 4:
-	        	update_element(n);
+	        	printf("\nEnter the element to be updated in the list : ");
+				scanf("%d",&element);
+	        	update_element(element);
 	        	break;
        
        
